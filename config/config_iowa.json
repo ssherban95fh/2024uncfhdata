@@ -1,0 +1,35 @@
+{
+    "import_json_file_path": "imports/scout_test.json"
+    , "page_title": "Scout Test"
+    , "arrangement": {"rows": 3, "columns":[3,2,3]}
+    , "colours": {"fulcrum":"#532CEB"
+                , "light_grey": "#EFEFEF"
+                , "arg_blue": "#43A1D5"
+                , "rsa_green": "#0077495"
+    }
+    , "variables": {"iowa_goals": ["count_qualifiers", "goal", [{"Iowa": "team"}]]
+                  , "indiana_goals": ["count_qualifiers", "goal", [{"Indiana": "team"}]]
+                  , "iowa_shots": ["count_qualifiers", "shot_on_goal", [{"Iowa": "team"}]]
+                  , "indiana_shots": ["count_qualifiers", "shot_on_goal", [{"Indiana": "team"}]]
+                  , "iowa_25_entry": ["count_qualifiers", "twenty_five_yard_entry", [{"Iowa": "team"}]]
+                  , "indiana_25_entry": ["count_qualifiers", "twenty_five_yard_entry", [{"Indiana": "team"}]]
+                  , "iowa_circle_entry": ["count_qualifiers", "circle_entry", [{"Iowa": "team"}]]
+                  , "indiana_circle_entry": ["count_qualifiers", "circle_entry", [{"Indiana": "team"}]]
+                  , "iowa_corner": ["count_qualifiers", "penalty_corner", [{"Iowa": "team"}]]
+                  , "indiana_corner": ["count_qualifiers", "penalty_corner", [{"Indiana": "team"}]]
+                  , "iowa_turnover": ["count_qualifiers", "turnover", [{"Iowa": "team"}]]
+                  , "indiana_turnover": ["count_qualifiers", "turnover", [{"Indiana": "team"}]]
+
+    }
+    , "content": {"arg_logo": ["create_image", "images/ARG Logo.jpeg", "#A1", 200]
+                , "home_button": ["create_button_link", "^ Back Home", "#B1", "Home_UNC.html"] 
+                , "rsa_logo": ["create_image", "images/RSA Logo.png", "#C1", 200]
+                , "card_iowa_goals": ["create_data_card", "Iowa Goals", "iowa_goals", "#A2", "black"]
+                , "card_indian_goals": ["create_data_card", "Indiana Goals", "indiana_goals", "#B2", "red"]
+                , "contest_shots": ["create_contest_bar", "Shots", "iowa_shots", "indiana_shots", "#B3",400, 50, ["black", "red"]]
+                , "contest_circle_entry": ["create_contest_bar", "Circle Entries", "iowa_circle_entry", "indiana_circle_entry", "#B3",400, 50, ["black", "red"]]
+                , "contest_25_entries": ["create_contest_bar", "25 Entries", "iowa_25_entry", "indiana_25_entry", "#B3", 400, 50, ["black", "red"]]
+                , "contest_turnover": ["create_contest_bar", "Turnovers", "iowa_turnover", "indiana_turnover", "#B3", 400, 50, ["black", "red"]]
+                , "contest_corners": ["create_contest_bar", "Corners", "iowa_corner", "indiana_corner", "#B3",400, 50, ["black", "red"]]   
+    }
+}

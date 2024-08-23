@@ -1,0 +1,37 @@
+{
+    "import_json_file_path": "imports/082224_unc_v_wf_scrimmage.json"
+    , "page_title": "UNC v WF 082224"
+    , "arrangement": {"rows": 6, "columns":[3,3,3,3,3,3]}
+    , "colours": {"fulcrum":"#532CEB"
+                , "light_grey": "#EFEFEF"
+                , "arg_blue": "#43A1D5"
+                , "rsa_green": "#0077495"
+    }
+    , "variables": {"unc_ball_won": ["count_clips", "UNC Ball Won"]
+                  , "unc_ball_lost": ["count_clips", "UNC Ball Lost"]
+                  , "unc_ball_won_tackle": ["count_clips", "UNC Ball Won", [{"Ball Won": "Tackle"}]]
+                  , "unc_ball_lost_tackle": ["count_clips", "UNC Ball Lost", [{"Ball Won": "Tackle"}]]
+                  , "unc_ball_won_intercept": ["count_clips", "UNC Ball Won", [{"Ball Won": "Intercept"}]]
+                  , "unc_ball_lost_intercept": ["count_clips", "UNC Ball Lost", [{"Ball Won": "Intercept"}]]
+                  , "unc_transition_field_plot": ["cartesian_extract", "UNC Ball Won", [{"Ball Won": "Tackle"}, {"Ball Won": "Intercept"}], "Turnover Location", 60, 100]
+                  , "opp_transition_field_plot": ["cartesian_extract", "UNC Ball Lost", [{"Ball Won": "Tackle"}, {"Ball Won": "Intercept"}], "Turnover Location", 60, 100]
+                  , "unc_tackle_field_plot": ["cartesian_extract", "UNC Ball Won", [{"Ball Won": "Tackle"}], "Turnover Location", 60, 100]
+                  , "opp_tackle_field_plot": ["cartesian_extract", "UNC Ball Lost", [{"Ball Won": "Tackle"}], "Turnover Location", 60, 100]
+                  , "unc_intercept_field_plot": ["cartesian_extract", "UNC Ball Won", [{"Ball Won": "Intercept"}], "Turnover Location", 60, 100]
+                  , "opp_intercept_field_plot": ["cartesian_extract", "UNC Ball Lost", [{"Ball Won": "Intercept"}], "Turnover Location", 60, 100]
+                  
+                  
+
+    }
+    , "content": {"unc_logo": ["create_image", "images/unc_ram_logo.jpeg", "#A1", 200]
+                , "home_button": ["create_button_link", "^ Back", "#B1", "082224_unc_v_wf_scrimmage.html"] 
+                , "opp_logo": ["create_image", "images/Team Logos 2024/Wake Forest/Wake Forest [Old Decon Head].jpeg", "#C1", 200]
+                , "contest_ball_won": ["create_contest_bar", "Ball Won", "unc_ball_won", "unc_ball_lost", "#B3", 400, 50, ["blue", "green"]]
+                , "contest_ball_won_tackle": ["create_contest_bar", "Ball Won Tackle", "unc_ball_won_tackle", "unc_ball_lost_tackle", "#B3", 400, 50, ["blue", "green"]]
+                , "contest_ball_won_intercept": ["create_contest_bar", "Ball Won Intercept", "unc_ball_won_intercept", "unc_ball_lost_intercept", "#B3", 400, 50, ["blue", "green"]]
+                , "unc_scatter_plot_transition": ["create_scatter_plot", ["unc_transition_field_plot", "opp_transition_field_plot"], "#A4", "images/field_hockey_field_vert.png", 1050, 750, ["blue", "red"], 27, true, true]
+                , "unc_scatter_plot_tackle": ["create_scatter_plot", ["unc_tackle_field_plot", "opp_tackle_field_plot"], "#A5", "images/field_hockey_field_vert.png", 1050, 750, ["blue", "red"], 27, true, true]
+                , "unc_scatter_plot_intercept": ["create_scatter_plot", ["unc_intercept_field_plot", "opp_intercept_field_plot"], "#A5", "images/field_hockey_field_vert.png", 1050, 750, ["blue", "red"], 27, true, true]
+                           
+    }
+}

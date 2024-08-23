@@ -1,0 +1,41 @@
+{
+    "import_json_file_path": "imports/081824_Blue_v_White.json"
+    , "page_title": "Blue v White 081824"
+    , "arrangement": {"rows": 6, "columns":[3,3,3,3,3,3]}
+    , "colours": {"fulcrum":"#532CEB"
+                , "light_grey": "#EFEFEF"
+                , "arg_blue": "#43A1D5"
+                , "rsa_green": "#0077495"
+    }
+    , "variables": {"unc_shots": ["count_clips", "UNC Shot"]
+                  , "opp_shots": ["count_clips", "Opp Shot"]
+                  , "unc_goals": ["count_clips", "Goal", [{"Team": "UNC"}]]
+                  , "opp_goals": ["count_clips", "Goal", [{"Team": "opp"}]]
+                  , "unc_shots_on_target": ["count_clips", "UNC Shot", [{"Shot Result": "On Target"}]]
+                  , "opp_shots_on_target": ["count_clips", "Opp Shot", [{"Shot Result": "On Target"}]]
+                  , "unc_shot_field_plot": ["cartesian_extract", "UNC Shot",  [{"": ""}], "Circle", 60, 25]
+                  , "opp_shot_field_plot": ["cartesian_extract", "Opp Shot",  [{"": ""}], "Circle", 60, 25]
+                  , "unc_shot_goal_plot": ["cartesian_extract", "UNC Shot",  [{"": ""}], "Goal", 24, 14]
+                  , "opp_shot_goal_plot": ["cartesian_extract", "Opp Shot", [{"": ""}], "Goal", 24, 14]
+                  , "unc_goal_field_plot": ["cartesian_extract", "Goal", [{"Team": "UNC"}], "Circle", 60, 25]
+                  , "opp_goal_field_plot": ["cartesian_extract", "Goal", [{"Team": "Opp"}], "Circle", 60, 25]
+                  , "unc_goal_goal_plot": ["cartesian_extract", "Goal", [{"Team": "UNC"}], "Goal", 24, 14]
+                  , "opp_goal_goal_plot": ["cartesian_extract", "Goal", [{"Team": "Opp"}], "Goal", 24, 14]
+                  
+                  
+                  
+
+    }
+    , "content": {"unc_logo": ["create_image", "images/unc_ram_logo.jpeg", "#A1", 200]
+                , "home_button": ["create_button_link", "^ Back", "#B1", "081824_Blue_v_White.html"] 
+                , "opp_logo": ["create_image", "images/unc_ram_logo.jpeg", "#C1", 200]
+                , "contest_shots": ["create_contest_bar", "Shots", "unc_shots", "opp_shots", "#B2",400, 50, ["blue", "green"]]
+                , "contest_goals": ["create_contest_bar", "Goals", "unc_goals", "opp_goals", "#B2",400, 50, ["blue", "green"]]
+                , "contest_shots_ot": ["create_contest_bar", "Shots On Target", "unc_shots_on_target", "opp_shots_on_target", "#B2",400, 50, ["blue", "green"]]
+                , "unc_scatter_plot_shot_goal": ["create_scatter_plot", ["unc_shot_goal_plot", "opp_shot_goal_plot"], "#A3", "images/field_hockey_goal.png", 960, 560, ["blue", "red"], 27, true, true]
+                , "unc_scatter_plot_shot_field": ["create_scatter_plot", ["unc_shot_field_plot", "opp_shot_field_plot"], "#A3", "images/circle_entry.png", 960, 400, ["blue", "red"], 27, true, true]
+                , "unc_scatter_plot_goal_goal": ["create_scatter_plot", ["unc_goal_goal_plot", "opp_goal_goal_plot"], "#A3", "images/field_hockey_goal.png", 960, 560, ["blue", "red"], 27, true, true]
+                , "unc_scatter_plot_goal_field": ["create_scatter_plot", ["unc_goal_field_plot", "opp_goal_field_plot"], "#A3", "images/circle_entry.png", 960, 400, ["blue", "red"], 27, true, true]
+                           
+    }
+}

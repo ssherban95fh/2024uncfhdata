@@ -1,0 +1,19 @@
+{
+    "import_json_file_path": "imports/example.json"
+    , "page_title": "Fulcrum Report"
+    , "arrangement": {"rows": 2, "columns":1}
+    , "colours": {"fulcrum":"#532CEB"
+                , "light_grey": "#EFEFEF"
+    }
+    , "variables": {"clip_total": ["count_clips", ""]
+                  , "matrix_table": ["count_clips_table"
+                                    , ["all_rows"]
+                                    , ["all_qualifiers"]
+                    ]
+
+    }
+    , "content": {"card_clip_total": ["create_data_card", "Total Clips", "clip_total", "#A1"]
+                , "table_matrix": ["create_table", "Matrix", "matrix_table", "#A2"]
+
+    }
+}

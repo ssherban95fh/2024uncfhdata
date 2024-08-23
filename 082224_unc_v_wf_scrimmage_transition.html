@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ARG v RSA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+
+    <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script src="bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/math.min.js"></script>
+    <script src="js/angles.js"></script></head>
+
+  </head>
+
+  <body>
+
+    <div class="container-fluid pt-3" id="main_body">
+        <div id="row1" class="row">
+            <h3 id="main_title">main_title</h3>
+        </div>
+    </div>
+  </body>
+
+  <script>
+
+    // Get the pagename
+    var url = window.location.pathname;
+    var pagename = url.substring(url.lastIndexOf('/')+1, url.length -5);
+    if (pagename === "index" || url.slice(-1) === "/") { pagename = "ARG_v_RSA"};
+
+    const configUrl = "config/config_"+ pagename +".json";
+
+    d3.json(configUrl).then(function(config){
+
+        const mainTitle = d3.select("#main_title");
+        const pageTitle = config.page_title;
+
+        // Add title if given in config
+        if (pageTitle) {
+            mainTitle.text(pageTitle);
+        } else {
+            mainTitle.remove();
+        }
+
+        // Create the bootstrap grid structure for the report
+        create_bootstrap_grid(config.arrangement.rows, config.arrangement.columns)
+
+        // Define location of the json data to be analysed
+        const import_json_file_path = config.import_json_file_path;
+
+        d3.json(import_json_file_path).then(function(data) {
+
+            // Read the config variables
+            const var_results = read_config_variables(config, data)
+
+            // Create the content
+            create_config_content(config, var_results)
+
+        });
+
+        // Read the file initially
+        readJSONFile(import_json_file_path);
+
+        // Set up an interval to read the file every 5 seconds
+        setInterval(() => readJSONFile(import_json_file_path), 5000);
+
+
+    });
+
+    let lastJSONContent = null;
+
+    function readJSONFile(url) {
+        d3.json(url).then(data => {
+            const currentJSONContent = JSON.stringify(data);
+            if (lastJSONContent !== null && currentJSONContent !== lastJSONContent) {
+                // Refresh the page
+                window.location.reload();
+            }
+
+            lastJSONContent = currentJSONContent;
+        }).catch(error => {
+            console.error('Error reading the JSON file:', error);
+        });
+    };
+
+  </script>
+
+  </html>
